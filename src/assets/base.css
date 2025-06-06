@@ -1,0 +1,46 @@
+:root {
+  --vt-c-green: #0d631a;
+
+  --vt-c-soft-black: rgb(27, 27, 27);
+
+  /*Quartet Color Scheme from paletton.com*/
+  --cs-prim-light2: #c8bba6;
+  --cs-prim-light1: #b5a690;
+  --cs-prim-main: #a3947c;
+  --cs-prim-dark1: #928269;
+  --cs-prim-dark2: #7e6f58;
+
+  --cs-sec1-light2: #00e4be;
+  --cs-sec1-light1: #10c6a7;
+  --cs-sec1-main: #1ea38d;
+  --cs-sec1-dark1: #2a8c7b;
+  --cs-sec1-dark2: #367a6f;
+
+  --cs-sec2-dark2: #847d78;
+  --cs-sec2-dark1: #9f816c;
+  --cs-sec2-main: #c0835a;
+  --cs-sec2-light2: #e77628;
+  --cs-sec2-light2: #ff6700;
+
+  --cs-comp-light2: #434b54;
+  --cs-comp-light1: #2b2e32;
+  --cs-comp-main: #333639;
+  --cs-comp-dark1: #23262a;
+  --cs-comp-dark2: #1a1d20;
+}
+
+body {
+  background: black;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: var(--vt-c-black);
+  }
+}
+/*
+C8BBA6  B5A690  A3947C  928269  7E6F58
+00E4BE  10C6A7  1EA38D  2A8C7B  367A6F
+847D78  9F816C  C0835A  E77628  FF6700
+434B54  2B2E32  333639  23262A  1A1D20
+*/
