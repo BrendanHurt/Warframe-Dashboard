@@ -1,8 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import FoundryItemForm from '@/components/FoundryItemForm.vue'
+</script>
 
 <template>
   <main>
-    <WarframeCard />
-    <button>Add Warframe</button>
+    <FoundryItemForm />
   </main>
 </template>
