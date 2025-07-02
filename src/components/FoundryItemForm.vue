@@ -1,7 +1,13 @@
 <script lang="ts">
+import axios from 'axios'
+
 export default {
   data() {
     return {
+      name: '',
+      numOwned: 0,
+      dropSource: '',
+      dropChance: 0,
       material: [
         {
           name: '',
@@ -20,37 +26,38 @@ export default {
     deleteMaterial(counter: number) {
       this.material.splice(counter, 1)
     },
+    registerItem() {
+      axios
+        .post('/api/item', {
+          name: this.name,
+          numOwned: this.numOwned,
+          droupSource: this.dropSource,
+          dropChance: this.dropChance,
+        })
+        .then(async (res) => {
+          alert(res.data)
+        })
+        .catch(() => {
+          alert('Something went wrong.')
+        })
+    },
   },
 }
 </script>
 
 <template>
-  <form method="post">
-    <label>Name</label><input type="text" required />
+  <form @submit.prevent="registerItem">
+    <div><input placeholder="Name" type="text" required v-model="name" /></div>
     <br />
-    <label>How many you own</label><input type="number" />
+    <div><input placeholder="How many you already have" type="number" v-model="numOwned" /></div>
     <br />
-    <label>Drop Chance</label><input type="number" />
+    <div><input placeholder="Where it drops from" type="text" v-model="dropSource" /></div>
     <br />
-    <label>Drop Source</label><input type="text" />
+    <div><input placeholder="The drop chance" type="number" v-model="dropChance" /></div>
     <br />
-    <fieldset>
-      <legend>Materials</legend>
-      <label for="name">Name <input /></label>
-      <label for="amount">Amount <input type="number" /></label>
-      <br />
-      <div class="matCard" v-for="(name, amount) in material" v-bind:key="counter">
-        <span @click="deleteMaterial(counter)">x </span>
-        <label for="name">Name </label>
-        <input type="text" v-model="material.name" required />
-        <label for="amount"> Amount </label>
-        <input type="number" v-model="material.amount" required />
-      </div>
-      <button @click="addMaterial">Add another material:</button>
-    </fieldset>
 
     <button>Cancel</button>
-    <submit>Confirm</submit>
+    <button @click="registerItem">Confirm</button>
   </form>
 </template>
 

@@ -23,7 +23,7 @@ export default defineConfig(({ mode }) => {
       },
     },
     server: {
-      port: process.env.SERVER_PORT ?? 3001,
+      port: 5173,
       proxy: {
         [serverAPIPath]: serverURL.origin,
       },
