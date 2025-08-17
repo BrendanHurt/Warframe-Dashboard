@@ -22,3 +22,12 @@ app.post(`${PATH}/item`, (_req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`)
 })
+/**
+ * What this is going to need:
+ * Import all of the endpoint types
+ * 
+ * Either create a handler for each type here, or
+ * import the handler that each type already has
+ * 
+ * 
+ */
