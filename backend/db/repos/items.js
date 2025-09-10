@@ -11,5 +11,8 @@ class ItemsRepo {
     create() {
         return this.db.none(sql_1.items.create);
     }
+    add(values) {
+        return this.db.one(sql_1.items.add, { name: values.name });
+    }
 }
 exports.ItemsRepo = ItemsRepo;

@@ -11,13 +11,13 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 const PORT = process.env.PORT || 3001
-const PATH = process.env.EXPRESS_API_PATH || '/api'
+const PATH = process.env.API_PATH || '/'
 
-app.get(`${PATH}`, (_req, res) => {
+app.get(`/test`, (_req, res) => {
   res.status(200).json({ message: 'Hello from the server!' })
 })
 
-app.get(`${PATH}/items/create`, (_req, res) => {
+app.get(`/items/create`, (_req, res) => {
   db.items.create()
   .then(() => {
     res.status(200).json({ message: 'Got request to create items table' })
@@ -29,7 +29,27 @@ app.get(`${PATH}/items/create`, (_req, res) => {
   .finally();
 });
 
-app.post(`${PATH}/item`, (_req, res) => {
+app.get(`/items/add/:name`, (req, res) => {
+  db.items.add(req.params)
+  .then((data) => {
+    res.status(200).json({ message: `Got request to add ${data.name}` });
+  })
+  .catch(() => {
+    res.status(500).json({ message: 'Error while trying to add a new item'})
+  })
+  .finally();
+})
+
+/*app.get(`/items/add/:name`, (req, res) => {
+  db.one(`INSERT INTO items(name) VALUES($1) RETURNING name`, [req.params.name])
+    .then((data) => {
+      console.log(`Added item: ${data.name}`);
+      res.status(200).json({ message: `Succesfully added: ${data.name}` });
+    })
+    .catch((error) => console.error(`ERROR: ${error}`));
+})*/
+
+app.post(`/item`, (_req, res) => {
   res.send('Got a post request!')
 })
 

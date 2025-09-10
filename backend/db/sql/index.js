@@ -16,4 +16,5 @@ function sql(file) {
 }
 exports.items = {
     create: sql('items/create.sql'),
+    add: sql('items/add.sql')
 };

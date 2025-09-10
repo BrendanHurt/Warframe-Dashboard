@@ -10,4 +10,8 @@ export class ItemsRepo {
     create(): Promise<null> {
         return this.db.none(sql.create);
     }
+
+    add(values: {name: string}): Promise<IItems> {
+        return this.db.one(sql.add, {name: values.name});
+    }
 }

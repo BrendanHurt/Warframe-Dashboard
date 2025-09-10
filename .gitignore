@@ -34,3 +34,5 @@ coverage
 
 .env*
 /express/dist
+# compiled ts files
+*.js

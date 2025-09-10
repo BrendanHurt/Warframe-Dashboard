@@ -17,4 +17,5 @@ function sql(file: string): QueryFile {
 
 export const items = {
     create: sql('items/create.sql'),
+    add: sql('items/add.sql')
 }
